@@ -12,15 +12,34 @@ export default function Authenticated({ user, header, children }) {
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16">
-                        <div className="flex">
+                    <div className="flex justify-between h-16 items-center">
+                        <div className="flex items-center">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
+                        </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                        <div className="flex-grow mx-4 flex justify-center">
+                            <div className="relative w-2/3 text-gray-600">
+                                <input 
+                                    type="search" 
+                                    name="search" 
+                                    placeholder="Search..." 
+                                    className="w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none border border-gray-300"
+                                />
+                                <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
+                                    <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                                        <path d="M23.707,22.293l-6.388-6.388c1.396-1.828,2.177-4.121,2.177-6.542C19.496,4.048,15.448,0,10.748,0S1.996,4.048,1.996,9.363 s4.048,9.363,9.363,9.363c2.422,0,4.714-0.781,6.542-2.177l6.388,6.388c0.195,0.195,0.451,0.293,0.707,0.293 s0.512-0.098,0.707-0.293C24.098,23.318,24.098,22.684,23.707,22.293z M10.748,16.726c-4.063,0-7.363-3.3-7.363-7.363 s3.3-7.363,7.363-7.363s7.363,3.3,7.363,7.363S14.811,16.726,10.748,16.726z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="hidden sm:flex sm:items-center sm:ml-6">
+                            <div className="hidden space-x-8 sm:-my-px sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Home
                                 </NavLink>
@@ -30,8 +49,8 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="hidden sm:flex sm:items-center sm:ms-6">
-                            <div className="ms-3 relative">
+                        <div className="hidden sm:flex sm:items-center sm:ml-6">
+                            <div className="ml-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
@@ -42,14 +61,14 @@ export default function Authenticated({ user, header, children }) {
                                                 {user.name}
 
                                                 <svg
-                                                    className="ms-2 -me-0.5 h-4 w-4"
+                                                    className="ml-2 -mr-0.5 h-4 w-4"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     viewBox="0 0 20 20"
                                                     fill="currentColor"
                                                 >
                                                     <path
                                                         fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 010-1.414z"
                                                         clipRule="evenodd"
                                                     />
                                                 </svg>
@@ -67,7 +86,7 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        <div className="-mr-2 flex items-center sm:hidden">
                             <button
                                 onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"

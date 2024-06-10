@@ -22,7 +22,10 @@ export default function AdminAuthenticated({ user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
-                                    Dashboard
+                                    Home
+                                </NavLink>
+                                <NavLink href={route('admin.create')} active={route().current('admin.create')}>
+                                    Create
                                 </NavLink>
                             </div>
                         </div>
