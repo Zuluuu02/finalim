@@ -33,7 +33,7 @@ export default function Dashboard({ auth }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
 
-    const categories = ['All', 'Streetwear', 'Dress', 'Formal', 'Semi-Formal'];
+    const categories = ['All', 'Streetwear', 'Dress', 'Formal', 'Semi-Formal', 'Casual'];
     const pins = [
         {
             title: 'Streetwear',
@@ -47,13 +47,43 @@ export default function Dashboard({ auth }) {
         },
         {
             title: 'Formal',
-            image: 'https://i.pinimg.com/736x/2c/c6/7a/2cc67adc1b92ab476463dd0f299435d5.jpg',
+            image: 'https://i.pinimg.com/736x/1a/b3/e6/1ab3e6038c13132d22cb6ad410edaeee.jpg',
             category: 'Formal'
         },
         {
             title: 'Semi-Formal',
             image: 'https://i.pinimg.com/564x/73/13/1d/73131dba1c92172b02946a9e109bcdea.jpg',
             category: 'Semi-Formal'
+        },
+        {
+            title: 'Casual',
+            image: 'https://i.pinimg.com/736x/65/3b/e6/653be667dde96622922c5914f3fb0d63.jpg',
+            category: 'Casual'
+        },
+        {
+            title: 'Dress',
+            image: 'https://i.pinimg.com/564x/06/ed/b6/06edb68e59f7a314ff8edef7ce767fdd.jpg',
+            category: 'Dress'
+        },
+        {
+            title: 'Formal',
+            image: 'https://i.pinimg.com/564x/42/3c/d4/423cd4ad8d23627ae822c5f64b176342.jpg',
+            category: 'Formal'
+        },
+        {
+            title: 'Semi-Formal',
+            image: 'https://i.pinimg.com/564x/94/27/5c/94275c6214f79aa251265e463f12dd90.jpg',
+            category: 'Semi-Formal'
+        },
+        {
+            title: 'Streetwear',
+            image: 'https://i.pinimg.com/564x/0d/df/20/0ddf207e792745d075901b0c3902db3b.jpg',
+            category: 'Streetwear'
+        },
+        {
+            title: 'Casual',
+            image: 'https://i.pinimg.com/736x/83/06/72/830672f6faf989c0f3b55ca5c39adcc5.jpg',
+            category: 'Casual'
         },
         // Add more sample pins here
     ];
