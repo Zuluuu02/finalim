@@ -33,7 +33,7 @@ export default function Dashboard({ auth }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
 
-    const categories = ['All', 'Streetwear', 'Shawtyy', 'Hottie'];
+    const categories = ['All', 'Streetwear', 'Dress', 'Formal', 'Semi-Formal'];
     const pins = [
         {
             title: 'Streetwear',
@@ -41,14 +41,19 @@ export default function Dashboard({ auth }) {
             category: 'Streetwear'
         },
         {
-            title: 'Shawtyy',
-            image: 'https://i.pinimg.com/564x/76/2b/1d/762b1dfdd2b516caa60c4ed6d9138fc3.jpg',
-            category: 'Shawtyy'
+            title: 'Dress',
+            image: 'https://i.pinimg.com/736x/ea/f5/ac/eaf5ac6da2020b35553cc5c52bcf0813.jpg',
+            category: 'Dress'
         },
         {
-            title: 'Hottie',
-            image: 'https://i.pinimg.com/736x/b4/47/7e/b4477e5c82de9a092608efd24a9c8510.jpg',
-            category: 'Hottie'
+            title: 'Formal',
+            image: 'https://i.pinimg.com/736x/2c/c6/7a/2cc67adc1b92ab476463dd0f299435d5.jpg',
+            category: 'Formal'
+        },
+        {
+            title: 'Semi-Formal',
+            image: 'https://i.pinimg.com/564x/73/13/1d/73131dba1c92172b02946a9e109bcdea.jpg',
+            category: 'Semi-Formal'
         },
         // Add more sample pins here
     ];
