@@ -2,9 +2,36 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 
+const Modal = ({ isOpen, onClose, imageSrc }) => {
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed z-10 inset-0 overflow-y-auto" onClick={onClose}>
+            <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+                <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div className="bg-white p-6">
+                        <img 
+                            src={imageSrc} 
+                            alt="Selected" 
+                            className="w-full h-full object-contain" 
+                            onClick={(e) => e.stopPropagation()} 
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default function Dashboard({ auth }) {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState('');
 
     const categories = ['All', 'Streetwear', 'Shawtyy', 'Hottie'];
     const pins = [
@@ -35,6 +62,16 @@ export default function Dashboard({ auth }) {
     const selectCategory = (category) => {
         setSelectedCategory(category);
         setIsDropdownOpen(false);
+    };
+
+    const openModal = (image) => {
+        setSelectedImage(image);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedImage('');
     };
 
     return (
@@ -80,7 +117,8 @@ export default function Dashboard({ auth }) {
                         {filteredPins.map((pin, index) => (
                             <div
                                 key={index}
-                                className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm"
+                                className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm cursor-pointer"
+                                onClick={() => openModal(pin.image)}
                             >
                                 <img
                                     src={pin.image}
@@ -97,6 +135,8 @@ export default function Dashboard({ auth }) {
                     </div>
                 </div>
             </div>
+
+            <Modal isOpen={isModalOpen} onClose={closeModal} imageSrc={selectedImage} />
         </AuthenticatedLayout>
     );
 }
