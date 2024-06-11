@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import ApplicationLogo from '@/Components/ApplicationLogo'; // Import the ApplicationLogo component
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -32,8 +33,18 @@ export default function Login({ status, canResetPassword }) {
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <form onSubmit={submit}>
-                <div>
+            <div className="absolute top-4 left-4">
+                <Link href="/" className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    &lt; Back
+                </Link>
+            </div>
+
+            <form onSubmit={submit} className="relative flex flex-col items-center"> {/* Update to flex layout */}
+                <div className="flex flex-col items-center"> {/* Center the logo */}
+                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                </div>
+                
+                <div className="mt-8"> {/* Add margin-top to avoid overlap with the logo */}
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
