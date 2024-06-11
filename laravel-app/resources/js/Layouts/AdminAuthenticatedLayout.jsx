@@ -15,7 +15,7 @@ export default function AdminAuthenticated({ user, header, children }) {
                     <div className="flex justify-between h-16 items-center">
                         <div className="flex items-center">
                             <div className="shrink-0 flex items-center">
-                                <Link href="/">
+                                <Link href={route('admin.dashboard')}>
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
@@ -43,8 +43,8 @@ export default function AdminAuthenticated({ user, header, children }) {
                                 <NavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
                                     Admin
                                 </NavLink>
-                                <NavLink href={route('admin.manage-user')} active={route().current('admin.manage-user')}>
-                                    Manage User
+                                <NavLink href={route('manage.user')} active={route().current('manage.user')}>
+                                    Manage Users
                                 </NavLink>
                             </div>
                         </div>
@@ -114,9 +114,9 @@ export default function AdminAuthenticated({ user, header, children }) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
+                        <NavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
                             Admin Dashboard
-                        </ResponsiveNavLink>
+                        </NavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
