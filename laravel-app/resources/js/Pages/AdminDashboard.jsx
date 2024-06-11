@@ -85,7 +85,6 @@ export default function AdminDashboard({ auth }) {
             image: 'https://i.pinimg.com/736x/83/06/72/830672f6faf989c0f3b55ca5c39adcc5.jpg',
             category: 'Casual'
         },
-        // Add more sample pins here
     ];
 
     const filteredPins = selectedCategory === 'All' ? pins : pins.filter(pin => pin.category === selectedCategory);
@@ -161,9 +160,7 @@ export default function AdminDashboard({ auth }) {
                                     className="w-64 h-80 object-cover"
                                 />
                                 <div className="p-4">
-                                    <h3 className="font-semibold text-lg text-gray-900">{pin.title}</h3>
-                                    {/* If there's no description, you can remove this line */}
-                                    {/* <p className="text-gray-700 mt-2">{pin.description}</p> */}
+                                    <h3 className="font-semibold text-lg text-gray-900">{pin.title}</h3> 
                                 </div>
                             </div>
                         ))}
