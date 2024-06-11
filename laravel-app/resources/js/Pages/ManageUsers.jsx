@@ -1,11 +1,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function AdminCreate({ auth }) {
+export default function ManageUsers({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Manage Users</h2>}
         >
             <Head title="Create" />
 

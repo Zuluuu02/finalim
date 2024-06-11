@@ -41,10 +41,10 @@ export default function AdminAuthenticated({ user, header, children }) {
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
                             <div className="hidden space-x-8 sm:-my-px sm:flex">
                                 <NavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
-                                    Home
+                                    Admin
                                 </NavLink>
-                                <NavLink href={route('admin.create')} active={route().current('admin.create')}>
-                                    Create
+                                <NavLink href={route('admin.manage-user')} active={route().current('admin.manage-user')}>
+                                    Manage User
                                 </NavLink>
                             </div>
                         </div>
