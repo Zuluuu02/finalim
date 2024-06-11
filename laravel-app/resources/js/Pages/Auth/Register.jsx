@@ -22,15 +22,28 @@ export default function Register() {
 
     const submit = (e) => {
         e.preventDefault();
-
         post(route('register'));
+    };
+
+    const handleClose = () => {
+        console.log('Close button clicked');
+        // Add any additional logic for closing, such as redirecting or hiding the form
+        // For example, you might want to navigate to another route:
+        // window.location.href = route('login');
     };
 
     return (
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="relative p-4 border rounded-md">
+                <button
+                    type="button"
+                    onClick={handleClose}
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                >
+                    &times;
+                </button>
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
