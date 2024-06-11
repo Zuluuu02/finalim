@@ -85,6 +85,56 @@ export default function AdminDashboard({ auth }) {
             image: 'https://i.pinimg.com/736x/83/06/72/830672f6faf989c0f3b55ca5c39adcc5.jpg',
             category: 'Casual'
         },
+        {
+            title: 'Semi-Formal',
+            image: 'https://i.pinimg.com/564x/cf/f1/b3/cff1b35c3f8e859f838d245dcbaa0dad.jpg',
+            category: 'Semi-Formal'
+        },
+        {
+            title: 'Streetwear',
+            image: 'https://i.pinimg.com/564x/9a/d2/5b/9ad25b079208197c5c96c67ca5727cdb.jpg',
+            category: 'Streetwear'
+        },
+        {
+            title: 'Dress',
+            image: 'https://i.pinimg.com/564x/9a/b6/f4/9ab6f4318569978a33e00f7722e6d3e7.jpg',
+            category: 'Dress'
+        },
+        {
+            title: 'Formal',
+            image: 'https://i.pinimg.com/564x/76/f6/d2/76f6d232da4e334d5ca45a705961bb1a.jpg',
+            category: 'Formal'
+        },
+        {
+            title: 'Casual',
+            image: 'https://i.pinimg.com/564x/b2/67/0b/b2670ba2073d3c9d9014c0254863f84a.jpg',
+            category: 'Casual'
+        },
+        {
+            title: 'Formal',
+            image: 'https://i.pinimg.com/564x/1c/4d/7e/1c4d7e4fda5eef38c913888cc2a48ae0.jpg',
+            category: 'Formal'
+        },
+        {
+            title: 'Semi-Formal',
+            image: 'https://i.pinimg.com/564x/7e/b1/be/7eb1be1a6991b413fce8594feca563b4.jpg',
+            category: 'Semi-Formal'
+        },
+        {
+            title: 'Casual',
+            image: 'https://i.pinimg.com/564x/7b/d1/67/7bd16779572618fc6ea17e543d028bd0.jpg',
+            category: 'Casual'
+        },
+        {
+            title: 'Dress',
+            image: 'https://i.pinimg.com/564x/32/a6/a5/32a6a591755c53ac59e8988daaf351e9.jpg',
+            category: 'Dress'
+        },
+        {
+            title: 'Streetwear',
+            image: 'https://i.pinimg.com/564x/ea/76/61/ea766105a3bbf782d90c60f9bdd6c4ce.jpg',
+            category: 'Streetwear'
+        },
     ];
 
     const filteredPins = selectedCategory === 'All' ? pins : pins.filter(pin => pin.category === selectedCategory);
