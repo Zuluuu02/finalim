@@ -49,6 +49,7 @@ export default function Register() {
                         id="name"
                         name="name"
                         value={data.name}
+                        placeholder="Name"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="name"
                         isFocused={true}
@@ -65,6 +66,7 @@ export default function Register() {
                         type="email"
                         name="email"
                         value={data.email}
+                        placeholder="Email"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="username"
                         onChange={(e) => setData('email', e.target.value)}
@@ -80,6 +82,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
+                        placeholder="Password"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="new-password"
                         onChange={(e) => setData('password', e.target.value)}
@@ -95,6 +98,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
+                        placeholder="Confirm Password"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="new-password"
                         onChange={(e) => setData('password_confirmation', e.target.value)}
@@ -103,7 +107,8 @@ export default function Register() {
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
-                <div className="flex justify-center">
+
+                <div className="mt-6"> {/* Changed margin top to 6 */}
                     <PrimaryButton className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
                         Register
                     </PrimaryButton>

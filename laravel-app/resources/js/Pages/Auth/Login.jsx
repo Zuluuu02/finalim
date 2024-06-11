@@ -56,6 +56,7 @@ export default function Login({ status, canResetPassword }) {
                         autoComplete="username"
                         isFocused={true}
                         onChange={(e) => setData('email', e.target.value)}
+                        placeholder="Email"
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -70,6 +71,7 @@ export default function Login({ status, canResetPassword }) {
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
+                        placeholder="Password"
                     />
                     <button
                         type="button"
@@ -81,7 +83,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mb-6 flex items-center">
+                <div className="mt-4 flex items-center"> {/* Changed margin top to 4 */}
                     <Checkbox
                         name="remember"
                         checked={data.remember}
@@ -92,7 +94,7 @@ export default function Login({ status, canResetPassword }) {
                     </label>
                 </div>
 
-                <div className="flex justify-between items-center mb-6">
+                <div className="flex justify-between items-center mb-4"> {/* Moved above the Log in button */}
                     {canResetPassword && (
                         <Link href={route('password.request')} className="text-sm text-gray-600 hover:text-gray-900">
                             Forgot your password?
