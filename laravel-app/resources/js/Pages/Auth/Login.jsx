@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
@@ -14,6 +14,8 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
+
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         return () => {
@@ -41,7 +43,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="flex flex-col items-center mb-6">
                     <ApplicationLogo className="w-16 h-16 fill-current text-gray-500 mb-2" />
-                    <h1 className="text-xl font-bold text-gray-700">Lorem Ipsum</h1>
+                    <h1 className="text-xl font-bold text-gray-700">Welcome to LeSunshine</h1>
                 </div>
 
                 <div className="mt-4">
@@ -50,7 +52,6 @@ export default function Login({ status, canResetPassword }) {
                         type="email"
                         name="email"
                         value={data.email}
-                        placeholder="Lorem Ipsum"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="username"
                         isFocused={true}
@@ -60,37 +61,48 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 relative">
                     <TextInput
                         id="password"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         name="password"
                         value={data.password}
-                        placeholder="Lorem Ipsum"
                         className="mt-1 block w-full bg-gray-200 rounded"
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
                     />
-
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute inset-y-0 right-0 px-3 py-2 text-gray-600 focus:outline-none"
+                    >
+                        {showPassword ? 'Hide' : 'Show'}
+                    </button>
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) => setData('remember', e.target.checked)}
-                        />
-                        <span className="ml-2 text-sm text-gray-600">Lorem Ipsum</span>
+                <div className="mb-6 flex items-center">
+                    <Checkbox
+                        name="remember"
+                        checked={data.remember}
+                        onChange={(e) => setData('remember', e.target.checked)}
+                    />
+                    <label htmlFor="remember" className="ml-2 text-sm text-gray-700">
+                        Remember me
                     </label>
                 </div>
 
-                <div className="mt-4">
-                    <PrimaryButton className="w-full bg-red-500 text-white py-2 rounded" disabled={processing}>
-                        Lorem Ipsum
-                    </PrimaryButton>
+                <div className="flex justify-between items-center mb-6">
+                    {canResetPassword && (
+                        <Link href={route('password.request')} className="text-sm text-gray-600 hover:text-gray-900">
+                            Forgot your password?
+                        </Link>
+                    )}
                 </div>
+
+                <PrimaryButton className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
+                    Log in
+                </PrimaryButton>
             </form>
         </GuestLayout>
     );
