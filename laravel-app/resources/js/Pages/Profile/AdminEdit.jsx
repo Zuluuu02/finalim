@@ -5,7 +5,7 @@ import UpdateProfileInformationForm from './Partials/UpdateProfileInformationFor
 import UpdateProfileMediaForm from './Partials/UpdateProfileMediaForm'; // Import the new form
 import { Head } from '@inertiajs/react';
 
-export default function Edit({ auth, mustVerifyEmail, status }) {
+export default function AdminEdit({ auth, mustVerifyEmail, status }) {
     return (
         <AdminAuthenticatedLayout
             user={auth.user}
