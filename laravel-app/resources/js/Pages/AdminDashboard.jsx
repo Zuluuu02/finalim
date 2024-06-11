@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminAuthenticatedLayout from '@/Layouts/AdminAuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 
@@ -109,7 +109,7 @@ export default function AdminDashboard({ auth }) {
     };
 
     return (
-        <AuthenticatedLayout
+        <AdminAuthenticatedLayout
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Admin</h2>}
         >
@@ -169,6 +169,6 @@ export default function AdminDashboard({ auth }) {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal} imageSrc={selectedImage} />
-        </AuthenticatedLayout>
+        </AdminAuthenticatedLayout>
     );
 }

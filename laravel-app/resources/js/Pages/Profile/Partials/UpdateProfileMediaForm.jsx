@@ -36,21 +36,25 @@ export default function UpdateProfileMediaForm({ className }) {
     };
 
     return (
-        <div className={className}>
+        <div className={`${className} space-y-6`}>
             <form onSubmit={handleSubmit}>
-                <div className="relative text-center mb-8">
+                <div className="relative mb-8">
                     <label className="block text-gray-700 mb-2">Cover Photo</label>
-                    <input type="file" onChange={handleCoverPhotoChange} className="block mx-auto mb-4" />
-                    {coverPhoto && <img src={coverPhoto} alt="Cover" className="w-full h-48 object-cover mb-4" />}
-                    
-                    {profilePicture && 
-                        <div className="relative inline-block">
-                            <img src={profilePicture} alt="Profile" className="w-24 h-24 rounded-full border-4 border-white absolute bottom-0 transform translate-y-1/2" />
-                        </div>
-                    }
+                    <input type="file" onChange={handleCoverPhotoChange} className="block mb-4" />
+                    {coverPhoto && <img src={coverPhoto} alt="Cover" className="w-full h-48 object-cover border border-gray-300 mb-4" />}
+
+                    <div className="absolute bottom-0 right-0 transform translate-y-1/2">
+                        <label className="block text-gray-700 mb-2">Profile Picture</label>
+                        <input type="file" onChange={handleProfilePictureChange} className="block mb-4" />
+                        {profilePicture && 
+                            <div className="relative inline-block">
+                                <img src={profilePicture} alt="Profile" className="w-24 h-24 rounded-full border-4 border-white" />
+                            </div>
+                        }
+                    </div>
                 </div>
 
-                <div className="mb-4 text-center">
+                <div className="mb-4">
                     <label className="block text-gray-700 mb-2">Description</label>
                     <textarea
                         value={description}
