@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import axios from 'axios';
+import { Inertia } from '@inertiajs/inertia';
 
 export default function Create({ auth }) {
     const [selectedFile, setSelectedFile] = useState(null);
-    const [selectedStyle, setSelectedStyle] = useState('');
     const [previewImage, setPreviewImage] = useState(null);
+    const [selectedStyle, setSelectedStyle] = useState('');
     const [uploadStatus, setUploadStatus] = useState('');
 
     const handleFileChange = (event) => {
@@ -26,92 +28,120 @@ export default function Create({ auth }) {
         setUploadStatus('');
     };
 
-    const handleSubmit = () => {
-        if (!selectedFile || !selectedStyle) {
-            setUploadStatus('Please select an image and a style.');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!selectedFile) {
+            setUploadStatus('Please select an image to upload.');
+            return;
+        }
+        if (!selectedStyle) {
+            setUploadStatus('Please select a style for the photo.');
             return;
         }
 
-        setUploadStatus('Uploading...');
-        
-        // Simulate an upload process
-        setTimeout(() => {
-            setUploadStatus('Upload successful!');
-        }, 2000);
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        formData.append('style', selectedStyle);
 
-        console.log('File:', selectedFile);
-        console.log('Style:', selectedStyle);
+        try {
+            const response = await axios.post('/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            console.log('Success response:', response.data);
+
+            // Redirect to the respective dashboard based on the selected style
+            switch (selectedStyle) {
+                case 'casual':
+                    Inertia.visit('/dashboard/casual');
+                    break;
+                case 'semi-formal':
+                    Inertia.visit('/dashboard/semi-formal');
+                    break;
+                case 'formal':
+                    Inertia.visit('/dashboard/formal');
+                    break;
+                case 'dress':
+                    Inertia.visit('/dashboard/dress');
+                    break;
+                case 'streetwear':
+                    Inertia.visit('/dashboard/streetwear');
+                    break;
+                default:
+                    Inertia.visit('/dashboard');
+            }
+
+            setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
+        } catch (error) {
+            console.error('There was a problem with the upload:', error);
+            setUploadStatus('Failed to upload file. Please try again.');
+        }
     };
 
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Upload Picture</h2>}
         >
-            <Head title="Create" />
+            <Head title="Upload Picture" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            <h3 className="text-lg font-semibold mb-4">Upload an Image</h3>
-                            {/* Preview the selected image */}
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-4">
+                                <label htmlFor="file-upload" className="block text-gray-700 font-semibold mb-2">Select a picture to upload:</label>
+                                <input
+                                    type="file"
+                                    id="file-upload"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    className="w-full"
+                                />
+                            </div>
                             {previewImage && (
                                 <div className="mb-4 relative">
                                     <img src={previewImage} alt="Preview" className="max-w-full h-auto border rounded-lg shadow-sm" />
-                                    <button 
-                                        onClick={handleClearPreview} 
+                                    <button
+                                        onClick={handleClearPreview}
                                         className="absolute top-2 right-2 px-2 py-1 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none"
                                     >
                                         &times;
                                     </button>
                                 </div>
                             )}
-                            {/* Input for uploading file */}
-                            <input 
-                                type="file" 
-                                onChange={handleFileChange} 
-                                className="mb-4 p-2 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
-                            />
-
-                            <h3 className="text-lg font-semibold mt-8 mb-4">Select Style</h3>
-                            {/* Dropdown for selecting style */}
-                            <select 
-                                value={selectedStyle} 
-                                onChange={handleStyleChange} 
-                                className="px-4 py-2 border rounded-lg shadow-sm mb-4 focus:outline-none focus:border-blue-500"
-                            >
-                                <option value="">Select Style</option>
-                                <option value="casual">Casual</option>
-                                <option value="semi-formal">Semi-Formal</option>
-                                <option value="formal">Formal</option>
-                                <option value="dress">Dress</option>
-                                <option value="streetwear">Streetwear</option>
-                            </select>
-
-                            {/* Display selected style */}
-                            {selectedStyle && (
-                                <div className="mb-4">
-                                    <p className="font-semibold">Selected Style:</p>
-                                    <p>{selectedStyle}</p>
-                                </div>
-                            )}
-
-                            {/* Display upload status */}
+                            <div className="mb-4">
+                                <label htmlFor="style-select" className="block text-gray-700 font-semibold mb-2">Select the style of the photo:</label>
+                                <select
+                                    id="style-select"
+                                    value={selectedStyle}
+                                    onChange={handleStyleChange}
+                                    className="w-full bg-white border border-gray-300 rounded py-2 px-3 text-gray-700"
+                                >
+                                    <option value="">-- Select Style --</option>
+                                    <option value="casual">Casual</option>
+                                    <option value="semi-formal">Semi-Formal</option>
+                                    <option value="formal">Formal</option>
+                                    <option value="dress">Dress</option>
+                                    <option value="streetwear">Streetwear</option>
+                                </select>
+                            </div>
                             {uploadStatus && (
-                                <div className={`mb-4 p-2 rounded-lg ${uploadStatus.includes('successful') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                                <div className={`mb-4 p-2 rounded-lg ${uploadStatus.includes('successfully') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                                     {uploadStatus}
                                 </div>
                             )}
-
-                            {/* Submit button */}
-                            <button 
-                                onClick={handleSubmit} 
-                                className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 focus:outline-none"
-                            >
-                                Submit
-                            </button>
-                        </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                                >
+                                    Upload
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
