@@ -12,4 +12,12 @@ class UserController extends Controller
     {
         return User::all();
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return response(null, 204);
+    }
 }
