@@ -7,7 +7,6 @@ export default function UpdateProfileMediaForm({ className }) {
     const [description, setDescription] = useState('');
     const [editMode, setEditMode] = useState(false);
 
-    // Load data from local storage when the component mounts
     useEffect(() => {
         const savedProfilePicture = localStorage.getItem('profilePicture');
         const savedCoverPhoto = localStorage.getItem('coverPhoto');
@@ -157,7 +156,7 @@ export default function UpdateProfileMediaForm({ className }) {
                     <div className="flex items-center justify-between">
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                         >
                             Save
                         </button>

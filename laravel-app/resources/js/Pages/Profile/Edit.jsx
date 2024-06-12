@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
-import UpdateProfileMediaForm from './Partials/UpdateProfileMediaForm'; // Import the new form
+import UpdateProfileMediaForm from './Partials/UpdateProfileMediaForm';
 import { Head } from '@inertiajs/react';
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
