@@ -64,12 +64,12 @@ export default function Welcome({ auth }) {
                             <p className="text-gray-700">Discover stylish and professional office attire that makes an impression. Our collection includes blazers, trousers, and elegant dresses for a sophisticated work wardrobe.</p>
                         </div>
                         <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Evening Wear</h3>
-                            <p className="text-gray-700">Find glamorous evening wear options for your next night out or special event. From dazzling dresses to chic jumpsuits, our collection ensures you shine.</p>
+                            <h3 className="text-xl font-semibold mb-2">Semi-Formal</h3>
+                            <p className="text-gray-700">Find glamorous semi-formal wear options for your next special event. From dazzling dresses to chic jumpsuits, our collection ensures you shine.</p>
                         </div>
                         <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Sportswear</h3>
-                            <p className="text-gray-700">Stay fit and fashionable with our range of sportswear. Whether it’s yoga pants, running gear, or athletic tops, our collection supports your active lifestyle.</p>
+                            <h3 className="text-xl font-semibold mb-2">Street Wear</h3>
+                            <p className="text-gray-700">Stay fit and fashionable with our range of streetwear. Whether it’s yoga pants, running gear, or athletic tops, our collection supports your active lifestyle.</p>
                         </div>
                         <div className="mb-8">
                             <h3 className="text-xl font-semibold mb-2">Accessories</h3>

@@ -112,7 +112,7 @@ export default function AdminDashboard({ auth }) {
         },
         {
             title: 'Formal',
-            image: 'https://i.pinimg.com/564x/1c/4d/7e/1c4d7e4fda5eef38c913888cc2a48ae0.jpg',
+            image: 'https://i.pinimg.com/564x/92/f2/52/92f25250719709fe1f3e5f4fc3341653.jpg',
             category: 'Formal'
         },
         {
