@@ -52,26 +52,7 @@ export default function Create({ auth }) {
 
             console.log('Success response:', response.data);
 
-            // Redirect to the respective dashboard based on the selected style
-            switch (selectedStyle) {
-                case 'casual':
-                    Inertia.visit('/dashboard/casual');
-                    break;
-                case 'semi-formal':
-                    Inertia.visit('/dashboard/semi-formal');
-                    break;
-                case 'formal':
-                    Inertia.visit('/dashboard/formal');
-                    break;
-                case 'dress':
-                    Inertia.visit('/dashboard/dress');
-                    break;
-                case 'streetwear':
-                    Inertia.visit('/dashboard/streetwear');
-                    break;
-                default:
-                    Inertia.visit('/dashboard');
-            }
+            Inertia.visit('/dashboard');
 
             setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
         } catch (error) {

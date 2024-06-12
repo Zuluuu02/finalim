@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import AdminAuthenticatedLayout from '@/Layouts/AdminAuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import axios from 'axios';
 import { Inertia } from '@inertiajs/inertia';
 
-export default function AdminCreate({ auth }) {
+export default function Create({ auth }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
     const [selectedStyle, setSelectedStyle] = useState('');
@@ -52,26 +52,7 @@ export default function AdminCreate({ auth }) {
 
             console.log('Success response:', response.data);
 
-            // Redirect to the respective dashboard based on the selected style
-            switch (selectedStyle) {
-                case 'casual':
-                    Inertia.visit('/dashboard/casual');
-                    break;
-                case 'semi-formal':
-                    Inertia.visit('/dashboard/semi-formal');
-                    break;
-                case 'formal':
-                    Inertia.visit('/dashboard/formal');
-                    break;
-                case 'dress':
-                    Inertia.visit('/dashboard/dress');
-                    break;
-                case 'streetwear':
-                    Inertia.visit('/dashboard/streetwear');
-                    break;
-                default:
-                    Inertia.visit('/dashboard');
-            }
+            Inertia.visit('/dashboard');
 
             setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
         } catch (error) {
@@ -81,7 +62,7 @@ export default function AdminCreate({ auth }) {
     };
 
     return (
-        <AdminAuthenticatedLayout
+        <AuthenticatedLayout
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Upload Picture</h2>}
         >
@@ -136,7 +117,7 @@ export default function AdminCreate({ auth }) {
                             <div>
                                 <button
                                     type="submit"
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
                                 >
                                     Upload
                                 </button>
@@ -145,6 +126,6 @@ export default function AdminCreate({ auth }) {
                     </div>
                 </div>
             </div>
-        </AdminAuthenticatedLayout>
+        </AuthenticatedLayout>
     );
 }
