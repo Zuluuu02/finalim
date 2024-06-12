@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,7 +33,11 @@ Route::get('/admin/dashboard', function () {
     return Inertia::render('AdminDashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-Route::get('/manage-user', function () {
+Route::get('/admin/dashboard/admin-create', function () {
+    return Inertia::render('AdminCreate');
+})->middleware(['auth', 'verified'])->name('admin.create');
+
+Route::get('/admin/dashboard/manage-user', function () {
     return Inertia::render('ManageUsers');
 })->middleware(['auth', 'verified'])->name('manage.user');
 
@@ -43,6 +48,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/users', [UserController::class, 'index']);
+});
 
 
 

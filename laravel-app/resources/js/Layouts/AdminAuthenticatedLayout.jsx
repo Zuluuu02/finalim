@@ -43,6 +43,9 @@ export default function AdminAuthenticated({ user, header, children }) {
                                 <NavLink href={route('admin.dashboard')} active={route().current('admin.dashboard')}>
                                     Admin
                                 </NavLink>
+                                <NavLink href={route('admin.create')} active={route().current('admin.create')}>
+                                    Create
+                                </NavLink>
                                 <NavLink href={route('manage.user')} active={route().current('manage.user')}>
                                     Manage Users
                                 </NavLink>
