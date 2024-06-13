@@ -4,27 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Upload;
 
 class UploadController extends Controller
 {
-    public function upload(Request $request)
+    public function store(Request $request)
     {
-        // Validate the request
         $request->validate([
-            'file' => 'required|image|max:2048',
+            'file' => 'required|image',
             'style' => 'required|string',
         ]);
 
-        // Handle the file upload
-        if ($request->file('file')->isValid()) {
-            $path = $request->file('file')->store('public/uploads');
+        $path = $request->file('file')->store('uploads', 'public');
 
-            // Generate the URL to the file
-            $url = Storage::url($path);
+        $upload = new Upload();
+        $upload->path = $path;
+        $upload->style = $request->input('style');
+        $upload->save();
 
-            return response()->json(['imageUrl' => $url], 200);
-        }
+        return response()->json(['message' => 'File uploaded successfully']);
+    }
 
-        return response()->json(['error' => 'File upload failed.'], 500);
+    public function index()
+    {
+        $uploads = Upload::all();
+        return response()->json($uploads);
     }
 }

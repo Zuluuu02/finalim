@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -56,3 +57,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::post('/upload', [UploadController::class, 'store']);
+Route::get('/uploads', [UploadController::class, 'index']);
