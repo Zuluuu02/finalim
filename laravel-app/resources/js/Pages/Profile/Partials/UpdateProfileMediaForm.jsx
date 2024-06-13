@@ -81,33 +81,31 @@ export default function UpdateProfileMediaForm({ className }) {
                         <img
                             src={coverPhoto}
                             alt="Cover"
-                            className="w-full h-64 object-cover rounded-t-lg"
+                            className="w-full h-48 object-cover rounded-t-lg"
                         />
                     ) : (
-                        <div className="w-full h-64 bg-gray-300 rounded-t-lg flex items-center justify-center">
+                        <div className="w-full h-48 bg-gray-300 rounded-t-lg flex items-center justify-center">
                             <span className="text-gray-500">Add Cover Photo</span>
                         </div>
                     )}
                     {profilePicture ? (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
-                            <div className="w-32 h-32 rounded-full border-8 border-white overflow-hidden">
-                                <img
-                                    src={profilePicture}
-                                    alt="Profile"
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-12">
+                            <img
+                                src={profilePicture}
+                                alt="Profile"
+                                className="w-24 h-24 rounded-full border-4 border-white object-cover"
+                            />
                         </div>
                     ) : (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
-                            <div className="w-32 h-32 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 border-8 border-white">
+                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-12">
+                            <div className="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
                                 <span>Add Photo</span>
                             </div>
                         </div>
                     )}
                 </div>
 
-                <div className="text-center mt-20">
+                <div className="text-center mt-16">
                     <h2 className="text-2xl font-semibold">{name || 'Your Name'}</h2>
                     <p className="mt-2 text-gray-600">{description || 'Your description here...'}</p>
                 </div>
@@ -121,7 +119,7 @@ export default function UpdateProfileMediaForm({ className }) {
                                 <img
                                     src={coverPhoto}
                                     alt="Cover"
-                                    className="w-full h-64 object-cover mt-2 rounded-md"
+                                    className="w-full h-48 object-cover mt-2 rounded-md"
                                 />
                             )}
                         </div>
@@ -131,13 +129,11 @@ export default function UpdateProfileMediaForm({ className }) {
                             <input type="file" onChange={handleProfilePictureChange} className="block w-full text-sm text-gray-500 file:py-2 file:px-4 file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100" />
                             {profilePicture && (
                                 <div className="mt-2">
-                                    <div className="w-32 h-32 rounded-full border-8 border-white overflow-hidden mx-auto">
-                                        <img
-                                            src={profilePicture}
-                                            alt="Profile"
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+                                    <img
+                                        src={profilePicture}
+                                        alt="Profile"
+                                        className="w-24 h-24 rounded-full border-4 border-white object-cover mx-auto"
+                                    />
                                 </div>
                             )}
                         </div>
@@ -169,7 +165,7 @@ export default function UpdateProfileMediaForm({ className }) {
                         <button
                             type="button"
                             onClick={() => setEditMode(true)}
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+                            className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-md"
                         >
                             Edit
                         </button>
@@ -177,7 +173,7 @@ export default function UpdateProfileMediaForm({ className }) {
                         <div className="flex items-center space-x-4">
                             <button
                                 type="submit"
-                                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
                             >
                                 Save
                             </button>
