@@ -55,29 +55,25 @@ export default function Welcome({ auth }) {
                 <div className="container mx-auto px-6">
                     <h2 className="text-2xl font-bold mb-8 text-center">Discover More Of Our Outfit Inspirations</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div className="mb-8">
+                        <div className="mb-8 p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                             <h3 className="text-xl font-semibold mb-2">Casual Wear</h3>
-                            <p className="text-gray-700">Explore trendy and comfortable casual outfits perfect for daily wear. From chic tops to stylish jeans, find your next favorite casual look here.</p>
+                            <p className="text-gray-700">Explore trendy and comfortable casual outfits perfect for daily wear. From chic tops to stylish jeans, find your next favorite casual look here. Ideal for hanging out with friends or running errands in style.</p>
                         </div>
-                        <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Office Attire</h3>
-                            <p className="text-gray-700">Discover stylish and professional office attire that makes an impression. Our collection includes blazers, trousers, and elegant dresses for a sophisticated work wardrobe.</p>
-                        </div>
-                        <div className="mb-8">
+                        <div className="mb-8 p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                             <h3 className="text-xl font-semibold mb-2">Semi-Formal</h3>
-                            <p className="text-gray-700">Find glamorous semi-formal wear options for your next special event. From dazzling dresses to chic jumpsuits, our collection ensures you shine.</p>
+                            <p className="text-gray-700">Find glamorous semi-formal wear options for your next special event. From dazzling dresses to chic jumpsuits, our collection ensures you shine. Perfect for cocktail parties, weddings, and other celebrations.</p>
                         </div>
-                        <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Street Wear</h3>
-                            <p className="text-gray-700">Stay fit and fashionable with our range of streetwear. Whether it’s yoga pants, running gear, or athletic tops, our collection supports your active lifestyle.</p>
+                        <div className="mb-8 p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <h3 className="text-xl font-semibold mb-2">Formal Wear</h3>
+                            <p className="text-gray-700">Discover elegant formal wear perfect for black-tie events. Our selection includes classic gowns and sophisticated suits to make you stand out. Be the epitome of grace and style at your next gala or formal event.</p>
                         </div>
-                        <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Accessories</h3>
-                            <p className="text-gray-700">Complete your look with our curated selection of accessories. From statement jewelry to stylish bags, find the perfect pieces to enhance any outfit.</p>
+                        <div className="mb-8 p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 col-span-2 lg:col-span-1">
+                            <h3 className="text-xl font-semibold mb-2">Dresses</h3>
+                            <p className="text-gray-700">Browse our wide range of dresses, from casual sundresses to elegant evening gowns. Find the perfect dress for any occasion, whether it's a beach day, a date night, or a formal dinner.</p>
                         </div>
-                        <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-2">Footwear</h3>
-                            <p className="text-gray-700">Step out in style with our footwear collection. Discover everything from casual sneakers to elegant heels, perfect for any occasion.</p>
+                        <div className="mb-8 p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 col-span-2 lg:col-span-1">
+                            <h3 className="text-xl font-semibold mb-2">Streetwear</h3>
+                            <p className="text-gray-700">Stay fit and fashionable with our range of streetwear. Whether it’s yoga pants, running gear, or athletic tops, our collection supports your active lifestyle. Perfect for hitting the gym, going for a run, or casual outings.</p>
                         </div>
                     </div>
                     <div className="mt-12 flex justify-center items-center">
