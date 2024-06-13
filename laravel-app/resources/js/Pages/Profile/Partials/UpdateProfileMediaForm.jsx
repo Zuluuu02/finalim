@@ -75,101 +75,122 @@ export default function UpdateProfileMediaForm({ className }) {
 
     return (
         <div className={`${className} space-y-6`}>
-            <form onSubmit={handleSubmit}>
-                <div className="relative mb-8 border-4 border-white p-2">
-                    {coverPhoto && (
+            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+                <div className="relative mb-8">
+                    {coverPhoto ? (
                         <img
                             src={coverPhoto}
                             alt="Cover"
-                            className="w-full h-48 object-cover"
+                            className="w-full h-64 object-cover rounded-t-lg"
                         />
+                    ) : (
+                        <div className="w-full h-64 bg-gray-300 rounded-t-lg flex items-center justify-center">
+                            <span className="text-gray-500">Add Cover Photo</span>
+                        </div>
                     )}
-                    {profilePicture && (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-12">
-                            <img
-                                src={profilePicture}
-                                alt="Profile"
-                                className="w-24 h-24 rounded-full border-4 border-white object-cover"
-                            />
+                    {profilePicture ? (
+                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
+                            <div className="w-32 h-32 rounded-full border-8 border-white overflow-hidden">
+                                <img
+                                    src={profilePicture}
+                                    alt="Profile"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
+                            <div className="w-32 h-32 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 border-8 border-white">
+                                <span>Add Photo</span>
+                            </div>
                         </div>
                     )}
                 </div>
 
-                <div className="text-center mt-16">
-                    <h2 className="text-xl font-semibold">{name}</h2>
-                    <div className="mt-2">
-                        <p>{description}</p>
-                    </div>
+                <div className="text-center mt-20">
+                    <h2 className="text-2xl font-semibold">{name || 'Your Name'}</h2>
+                    <p className="mt-2 text-gray-600">{description || 'Your description here...'}</p>
                 </div>
 
                 {editMode && (
-                    <div className="relative mb-8">
-                        <label className="block text-gray-700 mb-2">Cover Photo</label>
-                        <input type="file" onChange={handleCoverPhotoChange} className="block mb-4" />
-                        {coverPhoto && (
-                            <img
-                                src={coverPhoto}
-                                alt="Cover"
-                                className="w-full h-48 object-cover mb-4"
-                            />
-                        )}
-
-                        <label className="block text-gray-700 mb-2">Profile Picture</label>
-                        <input type="file" onChange={handleProfilePictureChange} className="block mb-4" />
-                        {profilePicture && (
-                            <div className="relative">
+                    <div className="mt-6 space-y-4">
+                        <div>
+                            <label className="block text-gray-700 mb-2">Cover Photo</label>
+                            <input type="file" onChange={handleCoverPhotoChange} className="block w-full text-sm text-gray-500 file:py-2 file:px-4 file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100" />
+                            {coverPhoto && (
                                 <img
-                                    src={profilePicture}
-                                    alt="Profile"
-                                    className="w-24 h-24 rounded-full border-4 border-white mb-2 object-cover"
+                                    src={coverPhoto}
+                                    alt="Cover"
+                                    className="w-full h-64 object-cover mt-2 rounded-md"
                                 />
-                            </div>
-                        )}
+                            )}
+                        </div>
 
-                        <label className="block text-gray-700 mb-2">Name</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={handleNameChange}
-                            className="mt-1 block w-full border border-gray-300 rounded-md p-2 mb-4"
-                        />
+                        <div>
+                            <label className="block text-gray-700 mb-2">Profile Picture</label>
+                            <input type="file" onChange={handleProfilePictureChange} className="block w-full text-sm text-gray-500 file:py-2 file:px-4 file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100" />
+                            {profilePicture && (
+                                <div className="mt-2">
+                                    <div className="w-32 h-32 rounded-full border-8 border-white overflow-hidden mx-auto">
+                                        <img
+                                            src={profilePicture}
+                                            alt="Profile"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
 
-                        <label className="block text-gray-700 mb-2">Description</label>
-                        <textarea
-                            value={description}
-                            onChange={handleDescriptionChange}
-                            className="mt-1 block w-full border border-gray-300 rounded-md p-2 mb-2"
-                            rows="3"
-                        />
+                        <div>
+                            <label className="block text-gray-700 mb-2">Name</label>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={handleNameChange}
+                                className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-gray-700 mb-2">Description</label>
+                            <textarea
+                                value={description}
+                                onChange={handleDescriptionChange}
+                                className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
+                                rows="3"
+                            ></textarea>
+                        </div>
                     </div>
                 )}
 
-                {!editMode ? (
-                    <button
-                        type="button"
-                        onClick={() => setEditMode(true)}
-                        className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-                    >
-                        Edit
-                    </button>
-                ) : (
-                    <div className="flex items-center justify-between">
-                        <button
-                            type="submit"
-                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                        >
-                            Save
-                        </button>
-
+                <div className="mt-6 flex items-center justify-between">
+                    {!editMode ? (
                         <button
                             type="button"
-                            onClick={handleDelete}
-                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => setEditMode(true)}
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
                         >
-                            Delete
+                            Edit
                         </button>
-                    </div>
-                )}
+                    ) : (
+                        <div className="flex items-center space-x-4">
+                            <button
+                                type="submit"
+                                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+                            >
+                                Save
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleDelete}
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    )}
+                </div>
             </form>
         </div>
     );

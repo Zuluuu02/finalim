@@ -41,6 +41,9 @@ Route::get('/admin/dashboard/manage-user', function () {
 })->middleware(['auth', 'verified'])->name('manage.user');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard/profile', [ProfileController::class, 'adminedit'])->name('admin.profile.edit');
+    Route::patch('/admin/dashboard/profile', [ProfileController::class, 'adminupdate'])->name('admin.profile.update');
+    Route::delete('/admin/dashboard/profile', [ProfileController::class, 'admindestroy'])->name('admin.profile.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

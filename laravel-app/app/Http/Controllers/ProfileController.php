@@ -24,6 +24,14 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function adminedit(Request $request): Response
+    {
+        return Inertia::render('Profile/AdminEdit', [
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
+        ]);
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -40,10 +48,42 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
 
+    public function adminupdate(ProfileUpdateRequest $request): RedirectResponse
+    {
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+
+        $request->user()->save();
+
+        return Redirect::route('admin.profile.edit');
+    }
+
+
     /**
      * Delete the user's account.
      */
     public function destroy(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'password' => ['required', 'current_password'],
+        ]);
+
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return Redirect::to('/');
+    }
+
+    public function admindestroy(Request $request): RedirectResponse
     {
         $request->validate([
             'password' => ['required', 'current_password'],
