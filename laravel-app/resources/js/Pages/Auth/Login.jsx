@@ -83,7 +83,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4 flex items-center"> {/* Changed margin top to 4 */}
+                <div className="mt-4 flex items-center">
                     <Checkbox
                         name="remember"
                         checked={data.remember}
@@ -94,7 +94,7 @@ export default function Login({ status, canResetPassword }) {
                     </label>
                 </div>
 
-                <div className="flex justify-between items-center mb-4"> {/* Moved above the Log in button */}
+                <div className="flex justify-between items-center mb-4"> 
                     {canResetPassword && (
                         <Link href={route('password.request')} className="text-sm text-gray-600 hover:text-gray-900">
                             Forgot your password?
