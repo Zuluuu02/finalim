@@ -14,6 +14,7 @@ export default function Register() {
         password: '',
         password_confirmation: '',
     });
+
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export default function Register() {
             <form onSubmit={submit} className="relative w-full max-w-sm mx-auto bg-gray-100 p-8 rounded-md shadow-md">
                 <div className="absolute top-4 right-4">
                     <Link href="/" className="text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <button className="text-xl">&times;</button>
+                        <button type="button" className="text-xl">&times;</button>
                     </Link>
                 </div>
 
@@ -56,7 +57,6 @@ export default function Register() {
                         onChange={(e) => setData('name', e.target.value)}
                         required
                     />
-
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
@@ -72,14 +72,13 @@ export default function Register() {
                         onChange={(e) => setData('email', e.target.value)}
                         required
                     />
-
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 relative">
                     <TextInput
                         id="password"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         name="password"
                         value={data.password}
                         placeholder="Password"
@@ -88,14 +87,20 @@ export default function Register() {
                         onChange={(e) => setData('password', e.target.value)}
                         required
                     />
-
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute inset-y-0 right-0 px-3 py-2 text-gray-600 focus:outline-none"
+                    >
+                        {showPassword ? 'Hide' : 'Show'}
+                    </button>
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
                     <TextInput
                         id="password_confirmation"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         name="password_confirmation"
                         value={data.password_confirmation}
                         placeholder="Confirm Password"
@@ -104,12 +109,11 @@ export default function Register() {
                         onChange={(e) => setData('password_confirmation', e.target.value)}
                         required
                     />
-
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="mt-6"> {/* Changed margin top to 6 */}
-                    <PrimaryButton className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
+                <div className="mt-6">
+                    <PrimaryButton type="submit" className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
                         Register
                     </PrimaryButton>
                 </div>

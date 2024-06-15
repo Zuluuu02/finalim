@@ -37,7 +37,7 @@ export default function Login({ status, canResetPassword }) {
             <form onSubmit={submit} className="relative w-full max-w-sm mx-auto bg-gray-100 p-8 rounded-md shadow-md">
                 <div className="absolute top-4 right-4">
                     <Link href="/" className="text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <button className="text-xl">&times;</button>
+                        <button type="button" className="text-xl">&times;</button>
                     </Link>
                 </div>
 
@@ -58,7 +58,6 @@ export default function Login({ status, canResetPassword }) {
                         onChange={(e) => setData('email', e.target.value)}
                         placeholder="Email"
                     />
-
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
@@ -102,7 +101,7 @@ export default function Login({ status, canResetPassword }) {
                     )}
                 </div>
 
-                <PrimaryButton className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
+                <PrimaryButton type="submit" className="w-full py-3 rounded-full text-center flex items-center justify-center bg-red-600 hover:bg-red-700 text-white" disabled={processing}>
                     Log in
                 </PrimaryButton>
             </form>
