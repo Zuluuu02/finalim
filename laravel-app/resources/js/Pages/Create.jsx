@@ -52,7 +52,7 @@ export default function Create({ auth }) {
 
             console.log('Success response:', response.data);
 
-            Inertia.visit('/profile');
+            Inertia.visit('/dashboard');
 
             setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
         } catch (error) {
