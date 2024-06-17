@@ -8,7 +8,7 @@ export default function Welcome({ auth }) {
             <header className="w-full bg-white shadow-lg sticky top-0 z-50">
                 <div className="container mx-auto flex justify-between items-center py-6 px-6">
                     <div className="flex items-center space-x-3">
-                        <img src="/sunshine.v2.png" alt="LeSunshine Logo" className="h-15 w-14" />
+                        <img src="/sunshine.png" alt="LeSunshine Logo" className="h-15 w-14" />
                         <div className="text-3xl font-extrabold text-black">
                             LeSunshine
                         </div>
