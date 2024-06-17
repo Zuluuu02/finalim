@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -60,3 +61,6 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 
 Route::post('/upload', [UploadController::class, 'store']);
 Route::get('/uploads', [UploadController::class, 'index']);
+
+Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('register', [RegisteredUserController::class, 'store']);
