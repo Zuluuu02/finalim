@@ -4,6 +4,7 @@ import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
 import UpdateProfileMediaForm from './Partials/UpdateProfileMediaForm';
+import UploadedPhotos from './Partials/UploadedPhotos';
 import { Head } from '@inertiajs/react';
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
@@ -26,9 +27,12 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     {/* Profile Picture Section */}
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <div className="flex justify-center">
-                            <UpdateProfileMediaForm className="w-full" />
+                            <UpdateProfileMediaForm className="w-full" onUpload={handleNewUpload} />
                         </div>
                     </div>
+
+                    {/* Uploaded Photos Section */}
+                    <UploadedPhotos photos={uploadedPhotos} />
 
                     {/* Existing sections */}
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
