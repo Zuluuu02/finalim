@@ -182,7 +182,7 @@ export default function AdminDashboard({ auth }) {
 
     const breakpointColumnsObj = {
         default: 6,
-        1100: 9,
+        1100: 4,
         700: 2,
         500: 1
     };
@@ -195,12 +195,12 @@ export default function AdminDashboard({ auth }) {
             <Head title="Dashboard" />
 
             <div className="py-12">
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
                             <div className="flex justify-between items-center mb-4">
-                                <h1 className="text-2xl font-bold">Your Pins</h1>
-                                <div className="relative">
+                                <h1 className="text-2xl font-bold">Categories</h1>
+                                <div className="relative z-50">
                                     <button
                                         className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                                         onClick={toggleDropdown}
@@ -255,7 +255,7 @@ export default function AdminDashboard({ auth }) {
                                             <img
                                                 src={pin.image}
                                                 alt={pin.title}
-                                                className="w-full h-auto object-cover cursor-pointer"
+                                                className="w-full h-auto object-cover cursor-pointer transition-transform transform hover:scale-105"
                                                 onClick={() => openModal(pin.image)}
                                             />
                                             <div className="p-2 bg-white">
@@ -274,4 +274,3 @@ export default function AdminDashboard({ auth }) {
         </AdminAuthenticatedLayout>
     );
 }
-
