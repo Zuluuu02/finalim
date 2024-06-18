@@ -70,7 +70,7 @@ export default function UpdateProfileMediaForm({ className }) {
                         </div>
                     ) : (
                         <div className="flex justify-center">
-                            <div className="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
+                            <div className="w-40 h-40 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
                                 <span>Add Photo</span>
                             </div>
                         </div>
