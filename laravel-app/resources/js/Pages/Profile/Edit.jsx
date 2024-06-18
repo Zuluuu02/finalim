@@ -30,18 +30,6 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                         </div>
                     </div>
 
-                    {/* New section for uploaded photos */}
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <h3 className="text-lg font-semibold mb-4 text-center">Uploaded Photos</h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            {uploadedPhotos.map((photoUrl, index) => (
-                                <div key={index} className="relative">
-                                    <img src={photoUrl} alt={`Uploaded ${index + 1}`} className="max-w-full h-auto border rounded-lg shadow-sm" />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
                     {/* Existing sections */}
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <UpdateProfileInformationForm
