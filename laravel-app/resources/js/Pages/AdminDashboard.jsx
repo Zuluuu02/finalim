@@ -164,9 +164,10 @@ export default function AdminDashboard({ auth }) {
                 setPins(shuffleArray(manualPins));
             }
         };
-
+    
         fetchPins();
     }, []);
+    
 
     const filteredPins = selectedCategory === 'All' ? pins : pins.filter(pin => pin.category.toLowerCase() === selectedCategory.toLowerCase());
 
@@ -183,7 +184,7 @@ export default function AdminDashboard({ auth }) {
         setSelectedImage(image);
         setIsModalOpen(true);
     };
-
+    
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedImage('');

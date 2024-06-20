@@ -38,41 +38,23 @@ export default function AdminCreate({ auth }) {
             setUploadStatus('Please select a style for the photo.');
             return;
         }
-
+    
         const formData = new FormData();
         formData.append('file', selectedFile);
         formData.append('style', selectedStyle);
-
+    
         try {
             const response = await axios.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-
+    
             console.log('Success response:', response.data);
-
-            // Redirect to the respective dashboard based on the selected style
-            switch (selectedStyle) {
-                case 'casual':
-                    Inertia.visit('/dashboard/casual');
-                    break;
-                case 'semi-formal':
-                    Inertia.visit('/dashboard/semi-formal');
-                    break;
-                case 'formal':
-                    Inertia.visit('/dashboard/formal');
-                    break;
-                case 'dress':
-                    Inertia.visit('/dashboard/dress');
-                    break;
-                case 'streetwear':
-                    Inertia.visit('/dashboard/streetwear');
-                    break;
-                default:
-                    Inertia.visit('/dashboard');
-            }
-
+    
+            // Redirect to admin dashboard after successful upload
+            Inertia.visit('/admin/dashboard');
+    
             setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
         } catch (error) {
             console.error('There was a problem with the upload:', error);
@@ -136,7 +118,7 @@ export default function AdminCreate({ auth }) {
                             <div>
                                 <button
                                     type="submit"
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
                                 >
                                     Upload
                                 </button>
