@@ -140,6 +140,15 @@ export default function Dashboard({ auth }) {
         },
     ];
 
+    const shuffleArray = (array) => {
+        const shuffledArray = [...array];
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+        return shuffledArray;
+    };
+
     useEffect(() => {
         const fetchPins = async () => {
             try {
@@ -149,10 +158,10 @@ export default function Dashboard({ auth }) {
                     image: `/storage/${upload.path}`,
                     category: upload.style
                 }));
-                setPins([...manualPins, ...uploadedPins]);
+                setPins(shuffleArray([...manualPins, ...uploadedPins]));
             } catch (error) {
                 console.error('Failed to fetch uploads:', error);
-                setPins(manualPins);
+                setPins(shuffleArray(manualPins));
             }
         };
 
