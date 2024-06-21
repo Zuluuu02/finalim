@@ -30,6 +30,7 @@ export default function Create({ auth }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setUploadStatus(''); // Clear previous status messages
         if (!selectedFile) {
             setUploadStatus('Please select an image to upload.');
             return;
@@ -38,25 +39,33 @@ export default function Create({ auth }) {
             setUploadStatus('Please select a style for the photo.');
             return;
         }
-
+    
         const formData = new FormData();
         formData.append('file', selectedFile);
         formData.append('style', selectedStyle);
-
+        formData.append('user_id', auth.user.id); // Ensure user_id is included
+    
         try {
+            console.log('Uploading file:', selectedFile);
+            console.log('With style:', selectedStyle);
+    
             const response = await axios.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-
+    
             console.log('Success response:', response.data);
-
-            Inertia.visit('/dashboard');
-
-            setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
+    
+            // Use Inertia's visit method only if response is successful
+            if (response.status === 200) {
+                Inertia.visit('/dashboard');
+                setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
+            } else {
+                setUploadStatus('Failed to upload file. Please try again.');
+            }
         } catch (error) {
-            console.error('There was a problem with the upload:', error);
+            console.error('There was a problem with the upload:', error.response ? error.response.data : error.message);
             setUploadStatus('Failed to upload file. Please try again.');
         }
     };

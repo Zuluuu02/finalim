@@ -1,17 +1,17 @@
-import { Router } from 'express';
-import multer, { diskStorage } from 'multer';
-import { extname } from 'path';
-import { saveFileToDatabase } from './database';
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const { saveFileToDatabase } = require('./database'); // Assumes you have a function to save file info to DB
 
-const router = Router();
+const router = express.Router();
 
-
-const storage = diskStorage({
+// Configure multer for file storage
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + extname(file.originalname));
+        cb(null, Date.now() + path.extname(file.originalname));
     },
 });
 
@@ -22,6 +22,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         const { file } = req;
         const { style } = req.body;
 
+        // Save file info to database
         await saveFileToDatabase({
             filename: file.filename,
             style,
@@ -35,4 +36,4 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;

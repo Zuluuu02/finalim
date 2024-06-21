@@ -13,6 +13,7 @@ class CreateUploadsTable extends Migration
             $table->id();
             $table->string('path');
             $table->string('style');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 

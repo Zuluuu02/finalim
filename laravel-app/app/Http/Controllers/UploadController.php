@@ -10,22 +10,21 @@ class UploadController extends Controller
 {
     public function store(Request $request)
     {
-        // Validate the incoming request
         $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'file' => 'required|image',
             'style' => 'required|string',
+            'user_id' => 'required|exists:users,id',
         ]);
 
-        // Store the file and get the path
-        $path = $request->file('file')->store('uploads', 'public');
+        $path = $request->file('file')->store('uploads');
 
-        // Save the path and style to the database
         $upload = new Upload();
         $upload->path = $path;
         $upload->style = $request->input('style');
+        $upload->user_id = $request->input('user_id');
         $upload->save();
 
-        return response()->json(['message' => 'File uploaded successfully', 'path' => $path]);
+        return response()->json(['message' => 'File uploaded successfully', 'style' => $request->input('style')], 200);
     }
 
     public function index()
