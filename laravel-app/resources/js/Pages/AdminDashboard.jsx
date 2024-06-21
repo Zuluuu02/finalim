@@ -164,10 +164,9 @@ export default function AdminDashboard({ auth }) {
                 setPins(shuffleArray(manualPins));
             }
         };
-    
+
         fetchPins();
     }, []);
-    
 
     const filteredPins = selectedCategory === 'All' ? pins : pins.filter(pin => pin.category.toLowerCase() === selectedCategory.toLowerCase());
 
@@ -184,10 +183,20 @@ export default function AdminDashboard({ auth }) {
         setSelectedImage(image);
         setIsModalOpen(true);
     };
-    
+
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedImage('');
+    };
+
+    const handleDelete = async (image) => {
+        try {
+            // Assuming the image path is stored in the database and can be accessed via a delete endpoint
+            await axios.delete(`/delete-image`, { data: { image } });
+            setPins(pins.filter(pin => pin.image !== image));
+        } catch (error) {
+            console.error('Failed to delete image:', error);
+        }
     };
 
     const breakpointColumnsObj = {
@@ -261,7 +270,7 @@ export default function AdminDashboard({ auth }) {
                             >
                                 {filteredPins.map((pin, index) => (
                                     <div key={index} className="mb-4">
-                                        <div className="rounded-lg overflow-hidden shadow-md">
+                                        <div className="rounded-lg overflow-hidden shadow-md relative">
                                             <img
                                                 src={pin.image}
                                                 alt={pin.title}
@@ -270,6 +279,12 @@ export default function AdminDashboard({ auth }) {
                                             />
                                             <div className="p-2 bg-white">
                                                 <h2 className="text-lg font-semibold">{pin.title}</h2>
+                                                <button
+                                                    onClick={() => handleDelete(pin.image)}
+                                                    className="absolute top-2 right-2 text-red-600 hover:text-red-800"
+                                                >
+                                                    Delete
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
