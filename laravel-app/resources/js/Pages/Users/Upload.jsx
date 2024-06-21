@@ -1,11 +1,11 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { saveFileToDatabase } = require('./database'); // Assumes you have a function to save file info to DB
+const { saveFileToDatabase } = require('./database');
 
 const router = express.Router();
 
-// Configure multer for file storage
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
@@ -22,7 +22,6 @@ router.post('/upload', upload.single('file'), async (req, res) => {
         const { file } = req;
         const { style } = req.body;
 
-        // Save file info to database
         await saveFileToDatabase({
             filename: file.filename,
             style,
