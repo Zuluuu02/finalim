@@ -38,23 +38,24 @@ export default function AdminCreate({ auth }) {
             setUploadStatus('Please select a style for the photo.');
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('file', selectedFile);
         formData.append('style', selectedStyle);
-    
+        formData.append('user_id', auth.user.id); // Adding user_id to the form data
+
         try {
             const response = await axios.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-    
+
             console.log('Success response:', response.data);
-    
+
             // Redirect to admin dashboard after successful upload
             Inertia.visit('/admin/dashboard');
-    
+
             setUploadStatus(`File uploaded successfully with style: ${selectedStyle}!`);
         } catch (error) {
             console.error('There was a problem with the upload:', error);
