@@ -31,7 +31,7 @@ export default function Authenticated({ user, header, children }) {
                                     className="w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none border border-gray-300"
                                 />
                                 <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
-                                    <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                                    <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" xmlSpace="preserve">
                                         <path d="M23.707,22.293l-6.388-6.388c1.396-1.828,2.177-4.121,2.177-6.542C19.496,4.048,15.448,0,10.748,0S1.996,4.048,1.996,9.363 s4.048,9.363,9.363,9.363c2.422,0,4.714-0.781,6.542-2.177l6.388,6.388c0.195,0.195,0.451,0.293,0.707,0.293 s0.512-0.098,0.707-0.293C24.098,23.318,24.098,22.684,23.707,22.293z M10.748,16.726c-4.063,0-7.363-3.3-7.363-7.363 s3.3-7.363,7.363-7.363s7.363,3.3,7.363,7.363S14.811,16.726,10.748,16.726z"/>
                                     </svg>
                                 </button>
